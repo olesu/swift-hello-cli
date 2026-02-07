@@ -18,7 +18,7 @@ brew install xcodegen swiftlint
 
 ## Project setup
 
-The project is configured in [project.yaml](./project.yaml) and generated with `XcodeGen`.
+The project is configured in [Makefile](./Makefile) and generated with `XcodeGen`.
 
 Run the generator with
 
@@ -36,14 +36,14 @@ xcrun simctl list devices booted
 
 (if none are booted just use "iPhone 16" as a generic name)
 
-Now, boot the simulator. See [boot-simulator.sh](./boot-simulator.sh)
+Now, boot the simulator. See [Makefile](./Makefile)
 
 ```bash
 xcrun simctl boot "iPhone 16"
 open -a Simulator # if the simulator doesn't pop up by itself
 ```
 
-Run the build command, example may be outdated. See [build.sh](./build.sh) for the current version.
+Run the build command, example may be outdated. See [Makefile](./Makefile) for the current version.
 
 ```bash
 xcodebuild -scheme HelloWorldCLI \
