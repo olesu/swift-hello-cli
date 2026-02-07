@@ -25,3 +25,22 @@ Run the generator with
 ```bash
 xcodegen generate
 ```
+
+## Building the project
+
+Pick a destination simulator with
+
+```bash
+xcrun simctl list devices booted
+```
+
+(if none are booted just use "iPhone 16" as a generic name)
+
+Run the build command
+
+```bash
+xcodebuild -scheme HelloWorldCLI \
+    -project HelloWorldCLI.xcodeproj \
+    -destination 'platform=iOS Simulator,name=iOS 26.2' \
+    build
+```
