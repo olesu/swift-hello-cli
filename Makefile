@@ -10,6 +10,9 @@ APP_PATH=$(DERIVED_DATA)/Build/Products/Debug-iphonesimulator/$(PROJECT_NAME).ap
 
 all: generate lint build
 
+generate:
+	xcodegen generate
+
 lint:
 	swiftlint
 
