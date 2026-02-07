@@ -13,7 +13,7 @@ xcode-select --install
 Then install `XcodeGen`
 
 ```bash
-brew install xcodegen
+brew install xcodegen swiftlint
 ```
 
 ## Project setup
