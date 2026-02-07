@@ -15,3 +15,7 @@ Then install `XcodeGen`
 ```bash
 brew install xcodegen
 ```
+
+## Project setup
+
+The project is configured in [project.yaml](./project.yaml) and generated with `XcodeGen`.

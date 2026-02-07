@@ -1,0 +1,10 @@
+name: HelloWorldCLI
+options: 
+  bundlePrefix: com.example.olesu
+targets:
+  HelloWorldCLI:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: .
