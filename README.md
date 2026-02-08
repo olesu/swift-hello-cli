@@ -1,6 +1,6 @@
 # Hello, CLI
 
-In this project, the goal is to build a Hello, World MacOS/iOS SwiftUI application using only VS Code and freely available CLI tools.
+In this project, the goal is to build a Hello, World iOS SwiftUI application using only VS Code and freely available CLI tools.
 
 ## Initial tooling
 
@@ -10,73 +10,51 @@ Before starting, ensure that Xcode command line tools are installed.
 xcode-select --install
 ```
 
-Then install `XcodeGen`
+Then install `XcodeGen` and `SwiftLint`:
 
 ```bash
 brew install xcodegen swiftlint
 ```
 
-## Project setup
+## Project structure
 
-The project is configured in [Makefile](./Makefile) and generated with `XcodeGen`.
+- **`Sources/`** - Main app code (`HelloWorldApp.swift`)
+- **`Packages/HelloWorldViews/`** - Reusable UI package containing `ContentView`
+- **`project.yml`** - Xcode project configuration (processed by XcodeGen)
+- **`Package.swift`** - Swift package definition for IDE/LSP support
+- **`Makefile`** - Build automation commands
 
-Run the generator with
+## Quick start
 
-```bash
-xcodegen generate
-```
+### 1. Set up IDE support
 
-## IDE Setup (VS Code Language Server)
-
-For proper IDE support in VS Code (code completion, error checking, etc.), build the Swift package once:
+For proper language server support in VS Code, build the Swift package once:
 
 ```bash
 swift build
 ```
 
-This generates the `.build/` directory with compiled modules that the language server uses to resolve imports. You only need to run this once after cloning; the LSP will work automatically after that.
+This generates the `.build/` directory with compiled modules.
 
-If you make changes to package dependencies or want to refresh the language server cache, run `swift build` again.
+### 2. Build and run the app
 
-## Building the project
-
-Pick a destination simulator with
+The easiest way is to use the Makefile:
 
 ```bash
-xcrun simctl list devices booted
+make run
 ```
 
-(if none are booted just use "iPhone 16" as a generic name)
+This will:
+- Regenerate the Xcode project from `project.yml`
+- Boot the iOS simulator
+- Build the app
+- Install and launch it
 
-Now, boot the simulator. See [Makefile](./Makefile)
+For individual steps, use:
+- `make generate` - Regenerate Xcode project
+- `make build` - Build the app
+- `make boot` - Boot the simulator
 
-```bash
-xcrun simctl boot "iPhone 16"
-open -a Simulator # if the simulator doesn't pop up by itself
-```
+## Manual build (if not using Makefile)
 
-Run the build command, example may be outdated. See [Makefile](./Makefile) for the current version.
-
-```bash
-xcodebuild -scheme HelloWorldCLI \
-    -project HelloWorldCLI.xcodeproj \
-    -destination 'platform=iOS Simulator,name=iPhone 16' \
-    -derivedDataPath build \
-    build
-```
-
-## Install and launch
-
-After a successful build, we install and launch the application.
-
-First, the install:
-
-```bash
-xcrun simctl install "iPhone 17" build/Build/Products/Debug-iphonesimulator/HelloWorldCLI.app
-```
-
-Then, launch it:
-
-```bash
-xcrun simctl launch "iPhone 17" com.example.olesu.HelloWorldCLI
-```
+If you prefer to use xcodebuild directly, see the [Makefile](./Makefile) for the exact commands. The project uses iOS 17.0 as the deployment target and builds for the iPhone simulator.
