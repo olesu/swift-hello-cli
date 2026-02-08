@@ -1,0 +1,9 @@
+{
+  "swift.sourceKitLSP.serverArguments": [
+    "--log-level", "debug"
+  ],
+  "swift.sourceKitLSP.defaultWorkingDirectory": "${workspaceFolder}",
+  "[swift]": {
+    "editor.defaultFormatter": "swift-lang.swift-format"
+  }
+}

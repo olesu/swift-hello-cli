@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "HelloWorldViews",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17),
+        .macOS(.v14)
     ],
     products: [
         .library(
@@ -20,3 +21,4 @@ let package = Package(
         )
     ]
 )
+

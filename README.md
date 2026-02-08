@@ -26,6 +26,18 @@ Run the generator with
 xcodegen generate
 ```
 
+## IDE Setup (VS Code Language Server)
+
+For proper IDE support in VS Code (code completion, error checking, etc.), build the Swift package once:
+
+```bash
+swift build
+```
+
+This generates the `.build/` directory with compiled modules that the language server uses to resolve imports. You only need to run this once after cloning; the LSP will work automatically after that.
+
+If you make changes to package dependencies or want to refresh the language server cache, run `swift build` again.
+
 ## Building the project
 
 Pick a destination simulator with

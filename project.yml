@@ -1,6 +1,7 @@
 name: HelloWorldCLI
 options: 
   bundleIdPrefix: com.example.olesu
+  createIntermediateGroups: true
 packages:
   HelloWorldViews:
     path: Packages/HelloWorldViews
@@ -22,4 +23,3 @@ schemes:
     build:
       targets:
         HelloWorldCLI: [run, test, profile, analyze]
-        
