@@ -1,4 +1,5 @@
 import SwiftUI
+import HelloWorldViews
 
 @main
 struct HelloWorldApp: App {

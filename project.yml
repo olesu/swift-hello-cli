@@ -1,6 +1,9 @@
 name: HelloWorldCLI
 options: 
   bundleIdPrefix: com.example.olesu
+packages:
+  HelloWorldViews:
+    path: Packages/HelloWorldViews
 targets:
   HelloWorldCLI:
     type: application
@@ -8,6 +11,8 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: Sources
+    dependencies:
+      - package: HelloWorldViews
     settings:
       GENERATE_INFOPLIST_FILE: YES
       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
